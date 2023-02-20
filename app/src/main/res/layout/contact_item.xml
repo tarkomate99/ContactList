@@ -9,18 +9,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/white">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:cardCornerRadius="250dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="12dp"
         android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/contactImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:gravity="center"/>
     </androidx.cardview.widget.CardView>
 
@@ -34,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:hint="Name Name"
+                android:textColor="@color/black"
                 />
             <TextView
                 android:id="@+id/contact_email"
@@ -41,18 +45,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:hint="email@gmail.com"
+                android:textColor="@color/black"
                 android:layout_below="@+id/contact_name"/>
             <TextView
                 android:id="@+id/contact_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:gravity="left"
                 android:hint="Cegléd, Mező utca 27."
+                android:textColor="@color/gray"
                 android:layout_below="@+id/contact_email"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
         </RelativeLayout>
 
 
