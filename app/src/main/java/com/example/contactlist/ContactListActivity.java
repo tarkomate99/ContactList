@@ -36,7 +36,7 @@ public class ContactListActivity extends AppCompatActivity {
 
         //loadDataInListView();
 
-        for(int i=0; i<5; i++){
+        for(int i=0; i<20; i++){
             Contact contact = new Contact();
             contact.setName("Tarkó Máté");
             contact.setEmail("tarkomate99@gmail.com");

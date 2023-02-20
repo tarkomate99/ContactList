@@ -28,11 +28,18 @@
         android:textColor="@color/gray2"
         android:textStyle="bold"/>
 
-    <ListView
-        android:id="@+id/contactList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textview"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ToolBar"
+        android:id="@+id/scrollView" android:fillViewport="true">
+        <ListView
+            android:id="@+id/contactList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview"/>
+    </ScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -40,7 +47,7 @@
         android:id="@+id/floatingBtn"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_above="@id/contactList"
+        android:layout_above="@id/scrollView"
         android:backgroundTint="@color/blue"
         android:elevation="6dp"
         android:layout_gravity="bottom"
