@@ -66,17 +66,7 @@ public class ContactListActivity extends AppCompatActivity {
     }
 
     private void loadDataInListView(){
-
-        /*
-        for(int i=0; i<20; i++){
-            Contact contact = new Contact();
-            contact.setName("Tarkó Máté");
-            contact.setEmail("tarkomate99@gmail.com");
-            contact.setAddress("Cegléd, Mező utca 27.");
-            contact.setImageUrl("https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/324076280_852729242626815_9216464839830012081_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dVB9Y0CZQuEAX8qkN5_&_nc_ht=scontent-vie1-1.xx&oh=00_AfA1OOXflNK8NtSW0qhrtDHw0m2rOKWOiMryLymYFAay8w&oe=63F9DA87");
-            data.add(contact);
-        }
-        */
+        
         RequestQueue volleyQueue = Volley.newRequestQueue(ContactListActivity.this);
 
         String url = "https://randomuser.me/api/?results=20";
