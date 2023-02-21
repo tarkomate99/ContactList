@@ -3,13 +3,22 @@ package com.example.contactlist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.contactlist.Adapter.ContactAdapter;
 import com.example.contactlist.Models.Contact;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -34,19 +43,7 @@ public class ContactListActivity extends AppCompatActivity {
         data = new ArrayList<>();
 
 
-        //loadDataInListView();
-
-        for(int i=0; i<20; i++){
-            Contact contact = new Contact();
-            contact.setName("Tarkó Máté");
-            contact.setEmail("tarkomate99@gmail.com");
-            contact.setAddress("Cegléd, Mező utca 27.");
-            contact.setImageUrl("https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/324076280_852729242626815_9216464839830012081_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dVB9Y0CZQuEAX8qkN5_&_nc_ht=scontent-vie1-1.xx&oh=00_AfA1OOXflNK8NtSW0qhrtDHw0m2rOKWOiMryLymYFAay8w&oe=63F9DA87");
-            data.add(contact);
-        }
-
-        adapter = new ContactAdapter(ContactListActivity.this, data);
-        contacts.setAdapter(adapter);
+        loadDataInListView();
     }
 
     @Override
@@ -60,7 +57,14 @@ public class ContactListActivity extends AppCompatActivity {
 
     private void loadDataInListView(){
 
-
+        for(int i=0; i<20; i++){
+            Contact contact = new Contact();
+            contact.setName("Tarkó Máté");
+            contact.setEmail("tarkomate99@gmail.com");
+            contact.setAddress("Cegléd, Mező utca 27.");
+            contact.setImageUrl("https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/324076280_852729242626815_9216464839830012081_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dVB9Y0CZQuEAX8qkN5_&_nc_ht=scontent-vie1-1.xx&oh=00_AfA1OOXflNK8NtSW0qhrtDHw0m2rOKWOiMryLymYFAay8w&oe=63F9DA87");
+            data.add(contact);
+        }
 
 
 
@@ -89,6 +93,21 @@ public class ContactListActivity extends AppCompatActivity {
 
         adapter = new ContactAdapter(ContactListActivity.this, data);
         contacts.setAdapter(adapter);
+
+        contacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(ContactListActivity.this, ContactDetailActivity.class);
+                TextView name = view.findViewById(R.id.contact_name);
+                TextView email = view.findViewById(R.id.contact_email);
+                ImageView image = view.findViewById(R.id.contactImage);
+                intent.putExtra("name", name.getText().toString());
+                intent.putExtra("email", email.getText().toString());
+                intent.putExtra("imageUrl", image.getTag().toString());
+
+                startActivity(intent);
+            }
+        });
     }
 
 

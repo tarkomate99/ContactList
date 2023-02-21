@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactDetailActivity"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="327dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="296dp"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="70dp"
+        app:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:id="@+id/phone_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_phone"
+                app:tint="@color/icons" />
+
+            <ImageView
+                android:id="@+id/phone_image2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/phone_image"
+                android:layout_marginTop="150dp"
+                android:src="@drawable/ic_email"
+                app:tint="@color/icons" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_toEndOf="@+id/phone_image"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mobile_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="+36203360554"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/mobile_number"
+                    android:text="Mobile"
+                    android:textColor="@color/gray" />
+
+                <TextView
+                    android:id="@+id/mobile_number2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:text="+36203360554"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/mobile_number2"
+                    android:text="Work"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/sms"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_sms"
+                app:tint="@color/icons" />
+
+            <ImageView
+                android:id="@+id/sms2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/sms"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/ic_sms"
+                app:tint="@color/icons" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="370dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/sms2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:background="@color/gray" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/email_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="tarkomate99@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/mobile_number"
+                    android:text="Home"
+                    android:textColor="@color/gray" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

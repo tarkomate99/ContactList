@@ -40,6 +40,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         Contact contact = getItem(position);
 
         Picasso.get().load(contact.getImageUrl()).into(contactImageView);
+        contactImageView.setTag(contact.getImageUrl());
         nameTextView.setText(contact.getName());
         emailTextView.setText(contact.getEmail());
         addressTextView.setText(contact.getAddress());
