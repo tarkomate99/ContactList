@@ -91,7 +91,7 @@
                     android:layout_height="match_parent"
                     android:text="+36203360554"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                     android:layout_marginTop="30dp"
                     android:text="+36203360554"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -138,7 +138,7 @@
 
             <View
                 android:id="@+id/divider"
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/sms2"
                 android:layout_alignParentEnd="true"
@@ -159,7 +159,7 @@
                     android:layout_height="match_parent"
                     android:text="tarkomate99@gmail.com"
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="match_parent"
