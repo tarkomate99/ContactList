@@ -31,7 +31,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ToolBar"
+        android:layout_below="@+id/textview"
         android:id="@+id/scrollView" android:fillViewport="true">
         <ListView
             android:id="@+id/contactList"
