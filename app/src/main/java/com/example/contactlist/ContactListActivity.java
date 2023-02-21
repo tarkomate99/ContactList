@@ -51,6 +51,7 @@ public class ContactListActivity extends AppCompatActivity {
 
         contacts = findViewById(R.id.contactList);
         data = new ArrayList<>();
+        contacts.setDivider(null);
 
 
         loadDataInListView();
@@ -66,7 +67,7 @@ public class ContactListActivity extends AppCompatActivity {
     }
 
     private void loadDataInListView(){
-        
+
         RequestQueue volleyQueue = Volley.newRequestQueue(ContactListActivity.this);
 
         String url = "https://randomuser.me/api/?results=20";

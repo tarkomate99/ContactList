@@ -18,7 +18,7 @@
         app:cardCornerRadius="250dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="12dp"
-        android:layout_gravity="center">
+        android:layout_gravity="top">
 
         <ImageView
             android:id="@+id/contactImage"
@@ -51,11 +51,18 @@
                 android:id="@+id/contact_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="left"
-                android:hint="Cegléd, Mező utca 27."
+                android:hint="Debrecen, Utca utca 1."
                 android:textColor="@color/gray"
                 android:layout_below="@+id/contact_email"/>
+            <View
+                android:layout_below="@+id/contact_city"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="10dp"/>
         </RelativeLayout>
 
 

@@ -31,6 +31,7 @@ public class ContactDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_detail);
 
         toolbar=findViewById(R.id.toolBar2);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         detailImage = findViewById(R.id.imageView);
         emailText = findViewById(R.id.email_address);
