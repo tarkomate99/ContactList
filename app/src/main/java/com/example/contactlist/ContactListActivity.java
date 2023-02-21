@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -14,10 +15,19 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.contactlist.Adapter.ContactAdapter;
 import com.example.contactlist.Models.Contact;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -57,6 +67,7 @@ public class ContactListActivity extends AppCompatActivity {
 
     private void loadDataInListView(){
 
+        /*
         for(int i=0; i<20; i++){
             Contact contact = new Contact();
             contact.setName("Tarkó Máté");
@@ -65,31 +76,65 @@ public class ContactListActivity extends AppCompatActivity {
             contact.setImageUrl("https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/324076280_852729242626815_9216464839830012081_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dVB9Y0CZQuEAX8qkN5_&_nc_ht=scontent-vie1-1.xx&oh=00_AfA1OOXflNK8NtSW0qhrtDHw0m2rOKWOiMryLymYFAay8w&oe=63F9DA87");
             data.add(contact);
         }
+        */
+        RequestQueue volleyQueue = Volley.newRequestQueue(ContactListActivity.this);
+
+        String url = "https://randomuser.me/api/?results=20";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                (Response.Listener<JSONObject>) res -> {
+                    String f_name;
+                    String l_name;
+                    String email;
+                    String city;
+                    Integer number;
+                    String street;
+                    String imageUrl;
+                    String mobile;
+                    String work;
+                    try {
+
+                        JSONArray jsonArray = res.getJSONArray("results");
+                        for(int i=0;i<jsonArray.length();i++){
+                            JSONObject contact = jsonArray.getJSONObject(i);
+                            f_name = contact.getJSONObject("name").getString("first");
+                            l_name = contact.getJSONObject("name").getString("last");
+                            email = contact.getString("email");
+                            city = contact.getJSONObject("location").getString("city");
+                            number = contact.getJSONObject("location").getJSONObject("street").getInt("number");
+                            street = contact.getJSONObject("location").getJSONObject("street").getString("name");
+                            imageUrl = contact.getJSONObject("picture").getString("large");
+                            mobile = contact.getString("phone");
+                            work = contact.getString("cell");
+
+                            Contact contact1 = new Contact();
+                            contact1.setId(i);
+                            contact1.setName(f_name+" "+l_name);
+                            contact1.setAddress(city+", "+street+" "+number);
+                            contact1.setEmail(email);
+                            contact1.setImageUrl(imageUrl);
+                            contact1.setMobile(mobile);
+                            contact1.setWork(work);
+                            data.add(contact1);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
 
 
+                (Response.ErrorListener) error -> {
+                    Toast.makeText(ContactListActivity.this, "Error! Cannot fetch!", Toast.LENGTH_LONG).show();
 
-/*
-                    JSONObject contact = jsonArray.getJSONObject(0);
-                    String f_name = contact.getString("name.first");
-                    String l_name = contact.getString("name.last");
+                    Log.e("ContactListActivity","error: ${error.localizedMessage}");
+                }
+        );
 
-                    Integer s_number = contact.getInt("location.street.number");
-                    String s_name = contact.getString("location.street.name");
-                    String city = contact.getString("location.city");
-
-                    String email = contact.getString("email");
-
-                    String pic = contact.getString("picture.thumbnail");
-
-                    Contact contact1 = new Contact();
-                    contact1.setName(l_name+" "+f_name);
-                    contact1.setAddress(city+", "+s_name+" "+s_number);
-                    contact1.setEmail(email);
-                    contact1.setImageUrl(pic);
-                    data.add(contact1);
-*/
-
-
+        volleyQueue.add(jsonObjectRequest);
 
         adapter = new ContactAdapter(ContactListActivity.this, data);
         contacts.setAdapter(adapter);
@@ -101,9 +146,12 @@ public class ContactListActivity extends AppCompatActivity {
                 TextView name = view.findViewById(R.id.contact_name);
                 TextView email = view.findViewById(R.id.contact_email);
                 ImageView image = view.findViewById(R.id.contactImage);
-                intent.putExtra("name", name.getText().toString());
-                intent.putExtra("email", email.getText().toString());
-                intent.putExtra("imageUrl", image.getTag().toString());
+                Contact contact = data.get(i);
+                intent.putExtra("name", contact.getName());
+                intent.putExtra("email", contact.getEmail());
+                intent.putExtra("imageUrl", contact.getImageUrl());
+                intent.putExtra("mobile", contact.getMobile());
+                intent.putExtra("work", contact.getWork());
 
                 startActivity(intent);
             }

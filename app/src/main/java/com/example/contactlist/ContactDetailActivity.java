@@ -20,7 +20,10 @@ public class ContactDetailActivity extends AppCompatActivity {
 
     ImageView detailImage;
     TextView emailText;
+    TextView nameText;
     private Toolbar toolbar;
+    TextView mobileText;
+    TextView workText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,16 @@ public class ContactDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         detailImage = findViewById(R.id.imageView);
         emailText = findViewById(R.id.email_address);
+        nameText = findViewById(R.id.nameText);
+        mobileText = findViewById(R.id.mobile_number);
+        workText = findViewById(R.id.mobile_number2);
         Picasso.get().load(getIntent().getStringExtra("imageUrl")).into(detailImage);
         detailImage.setAdjustViewBounds(true);
         detailImage.setScaleType(ImageView.ScaleType.FIT_XY);
         emailText.setText(getIntent().getStringExtra("email"));
+        nameText.setText(getIntent().getStringExtra("name"));
+        mobileText.setText('+'+getIntent().getStringExtra("mobile"));
+        workText.setText(getIntent().getStringExtra("work"));
 
     }
 
